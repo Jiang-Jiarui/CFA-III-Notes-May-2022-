@@ -15,7 +15,7 @@
 #### Challenges in Forecasting
 
 1. Limitations to using economic data
-   - **Time Lag** of the data
+   - ==**Time Lag**== of the data
    - Data might be **revised** in the future (including methodology)
    - Data index are often **rebased** overtime
 2. Data measurement errors and biases
