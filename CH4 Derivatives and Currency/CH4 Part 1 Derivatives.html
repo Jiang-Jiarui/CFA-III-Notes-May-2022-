@@ -1,0 +1,964 @@
+<!DOCTYPE html><html><head>
+      <title>CH4 Part 1 Derivatives</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\jiangjiarui\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.2\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="ch4-part1-derivatives">CH4 Part1: Derivatives</h1>
+
+<ul>
+<li><a href="#ch4-part1-derivatives">CH4 Part1: Derivatives</a>
+<ul>
+<li><a href="#option-management">Option Management</a>
+<ul>
+<li><a href="#option-fundamentals">Option Fundamentals</a>
+<ul>
+<li><a href="#moneyness">Moneyness</a></li>
+<li><a href="#intrinsic-value-and-time-value">Intrinsic value and time value</a></li>
+<li><a href="#factors-affecting-the-value-of-an-option">Factors affecting the value of an option</a></li>
+<li><a href="#the-bsm-model-to-value-an-option">The BSM model to value an option</a></li>
+<li><a href="#historical-volatility-and-implied-volatility">Historical Volatility and Implied Volatility</a></li>
+</ul>
+</li>
+<li><a href="#synthetic-asset">Synthetic Asset</a></li>
+<li><a href="#option-strategies">Option Strategies</a>
+<ul>
+<li><a href="#covered-call">Covered call</a></li>
+<li><a href="#protective-put">Protective put</a></li>
+<li><a href="#collar">Collar</a></li>
+<li><a href="#bull-spread">Bull spread</a></li>
+<li><a href="#bear-spread">Bear spread</a></li>
+<li><a href="#straddle">Straddle</a></li>
+<li><a href="#calendar-spread">Calendar Spread</a></li>
+<li><a href="#summary-option-strategies-selection">Summary: option strategies selection</a></li>
+</ul>
+</li>
+<li><a href="#option-greeks">Option Greeks</a>
+<ul>
+<li><a href="#delta">Delta</a></li>
+<li><a href="#gamma">Gamma</a></li>
+</ul>
+</li>
+<li><a href="#volatility-smile">Volatility Smile</a></li>
+</ul>
+</li>
+<li><a href="#swaps-forwards-and-futures-strategies">Swaps, Forwards, and Futures Strategies</a>
+<ul>
+<li><a href="#managing-interest-rate-risk">Managing Interest rate risk</a>
+<ul>
+<li><a href="#interest-rate-swap">Interest rate swap</a></li>
+<li><a href="#forward-rate-agreements-fras">Forward Rate Agreements (FRAs)</a></li>
+<li><a href="#short-dated-interest-rate-stir-futures-eurodollar-futures">Short-dated interest rate (STIR futures): Eurodollar futures</a></li>
+<li><a href="#longer-dated-fixed-income-futures-t-bond-futures">Longer-dated fixed-income futures: T-bond futures</a></li>
+</ul>
+</li>
+<li><a href="#managing-equity-risk">Managing equity risk</a>
+<ul>
+<li><a href="#equity-swap">Equity Swap</a></li>
+<li><a href="#equity-futures-and-forwards">Equity futures and forwards</a></li>
+</ul>
+</li>
+<li><a href="#using-derivative-to-alter-asset-allocation">Using derivative to alter asset allocation</a></li>
+<li><a href="#managing-currency-risk">Managing Currency risk</a>
+<ul>
+<li><a href="#currency-swap">Currency Swap</a></li>
+<li><a href="#currency-forwards-and-futures">Currency Forwards and Futures</a></li>
+</ul>
+</li>
+<li><a href="#managing-volatility-risk">Managing Volatility risk</a>
+<ul>
+<li><a href="#volatility-derivatives">Volatility derivatives</a></li>
+<li><a href="#variance-swap">Variance swap</a></li>
+</ul>
+</li>
+<li><a href="#inferring-market-expectation">Inferring Market Expectation</a>
+<ul>
+<li><a href="#fed-funds-futures">Fed funds futures</a></li>
+<li><a href="#eurodollar-futures">Eurodollar futures</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="mume-header" id="option-management">Option Management</h2>
+
+<h3 class="mume-header" id="option-fundamentals">Option Fundamentals</h3>
+
+<h4 class="mume-header" id="moneyness">Moneyness</h4>
+
+<p>Comparing current price with the strike price, <strong>Moneyness</strong> describes the value of an immediate exercise of an option</p>
+<ul>
+<li>In the money: positive payoff</li>
+<li>At the money: zero payoff</li>
+<li>Out of the money: negative payoff</li>
+</ul>
+<h4 class="mume-header" id="intrinsic-value-and-time-value">Intrinsic value and time value</h4>
+
+<p>When it comes to options,  <strong>value</strong> and <strong>payoff</strong> are the amount excluding the options premium, <strong>profit</strong> and <strong>Gain/Loss</strong> are the amount including options premium</p>
+<ul>
+<li>Intrinsic value: the amount of immediate exercise</li>
+<li>Time value: option premium - intrinsic value</li>
+</ul>
+<h4 class="mume-header" id="factors-affecting-the-value-of-an-option">Factors affecting the value of an option</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Factor</th>
+<th style="text-align:center">Calls</th>
+<th style="text-align:center">Puts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Underlying price</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">Strike price</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">Volatility</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">Risk-free rate</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">Time to expiration</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">Payments on the underlying</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">Carrying cost</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>* + is positively related, - is negatively related</p>
+<ul>
+<li>There is an exception to the general rule that European put option thetas are negative. The put value may increases as the option approaches maturity if the option is deep in-the-money and close to maturity</li>
+</ul>
+<h4 class="mume-header" id="the-bsm-model-to-value-an-option">The BSM model to value an option</h4>
+
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>=</mo><mo stretchy="false">[</mo><msub><mi>S</mi><mn>0</mn></msub><mo>&#xD7;</mo><mi>N</mi><mo stretchy="false">(</mo><msub><mi>d</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mo>&#x2212;</mo><mo stretchy="false">[</mo><mi>X</mi><mo>&#xD7;</mo><msup><mi>e</mi><mrow><mo>&#x2212;</mo><msubsup><mi>R</mi><mi>f</mi><mi>c</mi></msubsup><mo>&#xD7;</mo><mi>T</mi></mrow></msup><mo>&#xD7;</mo><mi>N</mi><mo stretchy="false">(</mo><msub><mi>d</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">C_0=[S_0\times N(d_1)]-[X\times e^{-R_f^c\times T}\times N(d_2)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0133em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2212;</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7385em;"><span style="top:-2.214em;margin-left:-0.0077em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.4249em;"><span></span></span></span></span></span></span><span class="mbin mtight">&#xD7;</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)]</span></span></span></span></span></p>
+<h4 class="mume-header" id="historical-volatility-and-implied-volatility">Historical Volatility and Implied Volatility</h4>
+
+<ul>
+<li><strong>Historical volatility</strong> is using historical data to calculate the variance and standard deviation of the continuously compounded returns</li>
+<li><strong>Implied volatility</strong> is using current market price and BSM to work backwards to get the volatility</li>
+</ul>
+<h3 class="mume-header" id="synthetic-asset">Synthetic Asset</h3>
+
+<ul>
+<li><strong>Put call parity</strong></li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mo>+</mo><mi>K</mi><msup><mi>e</mi><mrow><mo>&#x2212;</mo><mi>r</mi><mi>T</mi></mrow></msup><mo>=</mo><mi>P</mi><mo>+</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">C+Ke^{-rT} = P+S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8913em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2212;</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span></p>
+<ul>
+<li><strong>Synthetic long/short forward</strong>
+<ul>
+<li>Long call + short put = long forward</li>
+</ul>
+</li>
+<li><strong>Synthetic call/put</strong>
+<ul>
+<li>long call = long asset + long put</li>
+<li>long put = short asset + logn call</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="option-strategies">Option Strategies</h3>
+
+<h4 class="mume-header" id="covered-call">Covered call</h4>
+
+<ul>
+<li>Hold the underlying asset and sell a call option on the same underlying asset</li>
+<li>Purpose
+<ul>
+<li>Yield enhancement</li>
+<li>Reducing a position at a favorable price (ITM call option)</li>
+<li>Target price realization<br>
+<img src="Asset/1.%20Covered%20Call.png" alt="covered call"></li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="protective-put">Protective put</h4>
+
+<ul>
+<li>Hold the underlying asset and buy a put on the same underlying asset</li>
+<li>Protective put is used to limit the downside at the cost of the put premium</li>
+</ul>
+<p><img src="Asset/2.%20protective%20put.png" alt="protective put"></p>
+<ul>
+<li>Both covered call and protective put are not delta neutral</li>
+<li>Cash secured put
+<ul>
+<li>writes a put option, and deposits an amount of money equal to the exercise price</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="collar">Collar</h4>
+
+<ul>
+<li>components
+<ul>
+<li>hold the underlying stock</li>
+<li>buy a put with K lower than S</li>
+<li>sell a call with K higher than S</li>
+</ul>
+</li>
+<li>The cost of the put is largely and often precisely offset by the income from writing the call</li>
+<li>A collar limit the downside risk at a cost of giving up the upside return</li>
+</ul>
+<p><img src="Asset/3.%20Collar.png" alt="Collar"></p>
+<h4 class="mume-header" id="bull-spread">Bull spread</h4>
+
+<ul>
+<li>component
+<ul>
+<li>buying one call</li>
+<li>sell another call with a higher K</li>
+</ul>
+</li>
+<li>The buyer of a bull spread using call expects the stock price to rise and the purchased call to finish in-the-money. However, the buyer does not believe that the price of the stock will rise above the exercise price for the out-of-the-money written call</li>
+<li>A bull spread limit the downside risk at a cost of giving up the upside return<br>
+<img src="Asset/4.%20bull%20spread.png" alt="bull spread"></li>
+</ul>
+<h4 class="mume-header" id="bear-spread">Bear spread</h4>
+
+<ul>
+<li>With a bear spread, you buy the higher exercise price and write the lower exercise price</li>
+<li>component
+<ul>
+<li>buy one call</li>
+<li>sell another call with a lower K</li>
+</ul>
+</li>
+</ul>
+<p><img src="Asset/5.%20bear%20spread.png" alt="bear spread"></p>
+<h4 class="mume-header" id="straddle">Straddle</h4>
+
+<ul>
+<li>A long straddle is creadted by purchasing a call and a put with the same strike price and expiration
+<ul>
+<li>This strategy bets on higher volatility</li>
+</ul>
+</li>
+<li>A short straddle is creadted by selling a call and a put with the same strike price and expiration
+<ul>
+<li>This strategy bets on lower volatility</li>
+</ul>
+</li>
+</ul>
+<p><img src="Asset/6.%20Straddle.png" alt="Straddle"></p>
+<h4 class="mume-header" id="calendar-spread">Calendar Spread</h4>
+
+<ul>
+<li>Sell a near-dated call and buy a longer-dated call</li>
+<li>same underlying asset and same strike price</li>
+<li>Taking advantage of time decay is a primary motivation behind a calendar spread</li>
+</ul>
+<h4 class="mume-header" id="summary-option-strategies-selection">Summary: option strategies selection</h4>
+
+<p><img src="Asset/7.%20summary.png" alt="summary"></p>
+<h3 class="mume-header" id="option-greeks">Option Greeks</h3>
+
+<p><img src="Asset/8.%20option%20greeks.png" alt="option greeks"></p>
+<h4 class="mume-header" id="delta">Delta</h4>
+
+<ul>
+<li>delta = Change in option price / Change in underlying price</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>e</mi><mi>l</mi><mi>t</mi><msub><mi>a</mi><mrow><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi></mrow></msub><mo>=</mo><mi mathvariant="normal">&#x394;</mi><mi>C</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">&#x394;</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">delta_{call} = \Delta C/ \Delta S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">lt</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">ll</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x394;</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord">/&#x394;</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>e</mi><mi>l</mi><mi>t</mi><msub><mi>a</mi><mrow><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi></mrow></msub><mo>=</mo><mi mathvariant="normal">&#x394;</mi><mi>P</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">&#x394;</mi><mi>S</mi><mo>=</mo><mi>d</mi><mi>e</mi><mi>l</mi><mi>t</mi><msub><mi>a</mi><mrow><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi></mrow></msub><mo>&#x2212;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">delta_{call} = \Delta P/ \Delta S =delta_{call} - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">lt</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">ll</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x394;</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">/&#x394;</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">lt</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">ll</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></li>
+<li>BSM perspective
+<ul>
+<li>the call option&apos;s delta is equal to N(d<sub>1</sub>) from the BSM model, and the put option&apos;s delta equals N(d<sub>1</sub>)-1</li>
+</ul>
+</li>
+<li>The call delta increases from 0 to 1 as stock price increases</li>
+<li>The put delta increases from -1 to 0 as stock price increases</li>
+<li>Then t approaches maturity, a in-the-money call&apos;s delta is close to 1, while a out of the money call&apos;s delta is close to 0</li>
+</ul>
+<p><img src="Asset/9.%20call%20option%20delta.png" alt="call option delta"></p>
+<ul>
+<li>Delta hedge<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mtext>&#x2005;&#x200A;</mtext><mi>o</mi><mi>f</mi><mtext>&#x2005;&#x200A;</mtext><mi>o</mi><mi>p</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi><mtext>&#x2005;&#x200A;</mtext><mi>n</mi><mi>e</mi><mi>e</mi><mi>d</mi><mi>e</mi><mi>d</mi><mtext>&#x2005;&#x200A;</mtext><mi>t</mi><mi>o</mi><mtext>&#x2005;&#x200A;</mtext><mi>d</mi><mi>e</mi><mi>l</mi><mi>t</mi><mi>a</mi><mtext>&#x2005;&#x200A;</mtext><mi>h</mi><mi>e</mi><mi>d</mi><mi>g</mi><mi>e</mi><mo>=</mo><mfrac><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mtext>&#x2005;&#x200A;</mtext><mi>o</mi><mi>f</mi><mtext>&#x2005;&#x200A;</mtext><mi>s</mi><mi>h</mi><mi>a</mi><mi>r</mi><mi>e</mi><mi>s</mi><mtext>&#x2005;&#x200A;</mtext><mi>h</mi><mi>e</mi><mi>d</mi><mi>g</mi><mi>e</mi><mi>d</mi></mrow><mrow><mi>d</mi><mi>e</mi><mi>l</mi><mi>t</mi><mi>a</mi><mtext>&#x2005;&#x200A;</mtext><mi>o</mi><mi>f</mi><mtext>&#x2005;&#x200A;</mtext><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mtext>&#x2005;&#x200A;</mtext><mi>o</mi><mi>p</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">number\;of\;options\;needed\;to\;delta\;hedge = \frac{number\;of\;shares\;hedged}{delta\;of\;call\;option}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">mb</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">pt</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">ee</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">lt</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2519em;vertical-align:-0.8804em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">lt</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal">pt</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">mb</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">ha</span><span class="mord mathnormal">res</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></li>
+</ul>
+<h4 class="mume-header" id="gamma">Gamma</h4>
+
+<ul>
+<li>gamma = Change in option delta / Change in underlying price</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>a</mi><mi>m</mi><mi>m</mi><mi>a</mi><mo>=</mo><mi mathvariant="normal">&#x394;</mi><mi>d</mi><mi>e</mi><mi>l</mi><mi>t</mi><mi>a</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">&#x394;</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">gamma = \Delta delta/ \Delta S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">amma</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x394;</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal">lt</span><span class="mord mathnormal">a</span><span class="mord">/&#x394;</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></li>
+<li>Call and put options on the same stock with the same T and X have equal gammas</li>
+<li>If the option is deep in- or out-of-the-money, gamma approaches zero</li>
+<li><strong>Gamma is largest when the option is near the money</strong>, which means delta is very sensitive to a change in the stock price</li>
+</ul>
+<h3 class="mume-header" id="volatility-smile">Volatility Smile</h3>
+
+<ul>
+<li>Volatility smile is a plot of the implied volatility of an option as a function of its strike price</li>
+<li>The implied volatility of a European call option is always the same as the implied volatility of a European put option when the two have the same strike price and maturity date</li>
+<li>The implied volatility is relatively low for at-the-money options. It becomes progressively higher as an option moves either into the money or out of the money</li>
+<li>Volatility smile for currency options<br>
+<img src="Asset/10.%20volatility%20smile%20for%20currency%20options.png" alt="volatility smile for currency options"></li>
+<li>Volatility skew for equity options<br>
+<img src="Asset/11.%20Volatility%20skew%20for%20equity%20options.png" alt="Volatility skew for equity options">
+<ul>
+<li>reasons for smile skew in equity options
+<ul>
+<li><strong>Leverage</strong>: As a company&apos;s equity declines in value, the company&apos;s leverage increases. This means that the equity becomes more risky and its volatility increases</li>
+<li><strong>Volatility feedback effect</strong>: As volatility increases (decreases) because of external factors, investors require a higher (lower) return and as a result the stock price declines (increases).</li>
+<li>Crashophobia</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Risk reversal
+<ul>
+<li>long call and short put on the same underlying with same expiration</li>
+</ul>
+</li>
+<li>Alternative ways of characterizing the volatility smile
+<ul>
+<li>The volatility smile is often calculated as the relationship between the implied volatility and <strong>K/S<sub>0</sub></strong> rather than as the relationship between the implied volatility and K</li>
+<li>A refinement of this is to calculate the volatility smile as the relationship between the implied volatility and <strong>K/F<sub>0</sub></strong>, where F<sub>0</sub> is the forward pirce of the asset for a contract maturing at the same time as the options that are considered</li>
+</ul>
+</li>
+<li>Another approach to defining the volatility smile is as the relationship between the implied volatility and the <strong>delta</strong> of the option</li>
+<li>Volatility surfaces combine volatility smiles with the time to maturity and K/S<sub>0</sub>
+<ul>
+<li>Implied volatility tends to be an increasing (decreasing) function of maturity when short-dated volatilities are historically low (high)</li>
+</ul>
+</li>
+</ul>
+<p><img src="Asset/12.%20Volatility%20Surface.png" alt="volatility surface"></p>
+<h2 class="mume-header" id="swaps-forwards-and-futures-strategies">Swaps, Forwards, and Futures Strategies</h2>
+
+<h3 class="mume-header" id="managing-interest-rate-risk">Managing Interest rate risk</h3>
+
+<h4 class="mume-header" id="interest-rate-swap">Interest rate swap</h4>
+
+<ul>
+<li>A <strong>payer swap</strong> is a contract to make a series of <strong>fixed-rate payments</strong> and receive a series of floating-rate payments, both based on a specified notional principal (amount).</li>
+<li>Interest rate swaps can be used to:
+<ul>
+<li>convert between floating exposure and fixed exposure</li>
+<li>alter the duration of a fixed-income portfolio</li>
+</ul>
+</li>
+</ul>
+<p><img src="Asset/13.%20Converting%20Fixed-Rate%20and%20Floating-Rate%20Exposures.png" alt="Converting Fixed-Rate and Floating-Rate Exposures"></p>
+<ul>
+<li>
+<p>Duration of a swap</p>
+<ul>
+<li>A pay-fixed, receive-floating swap has a negative duration, because the duration of fixed-rate bond is positive and larger than the duration of a floating-rate bond, which is near zero</li>
+<li>A pay-floating, receive-fixed swap has a positive duration</li>
+<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>D</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><msub><mi>n</mi><mrow><mi>p</mi><mi>a</mi><mi>y</mi><mo>&#x2212;</mo><mi>f</mi><mi>l</mi><mi>o</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>n</mi><mi>g</mi></mrow></msub><mo>=</mo><mi>D</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><msub><mi>n</mi><mrow><mi>f</mi><mi>i</mi><mi>x</mi></mrow></msub><mo>&#x2212;</mo><mi>D</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><msub><mi>n</mi><mrow><mi>f</mi><mi>l</mi><mi>o</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>n</mi><mi>g</mi></mrow></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Duration_{pay-floating}=Duration_{fix}-Duration_{floating}&gt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mbin mtight">&#x2212;</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">in</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">in</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></li>
+<li>For floating-rate side, it doesn&apos;t has zero duration at all time, especially when the cash flow has been set. The duration of floating-rate side will be the time to next payment if the payment is known
+<ul>
+<li>eg. for a semi-annually reset swap, the duration of the floating payment is 0.5 on any coupon reset days</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Market value risk and cash flow risk</p>
+<ul>
+<li>Market value risk is a concern with fixed-rate instruments</li>
+<li>Cash flow risk, uncertainty regarding the size of cash flows, is a concern with floating-rate instruments</li>
+<li>there is a tradeoff between market value risk and cash flow risk</li>
+</ul>
+</li>
+<li>
+<p>Use IRS to modify the portfolio duration<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>N</mi><msub><mi>P</mi><mi>s</mi></msub><mo>=</mo><mi>M</mi><msub><mi>V</mi><mi>p</mi></msub><mo stretchy="false">(</mo><mfrac><mrow><mi>M</mi><msub><mi>D</mi><mi>T</mi></msub><mo>&#x2212;</mo><mi>M</mi><msub><mi>D</mi><mi>p</mi></msub></mrow><mrow><mi>M</mi><msub><mi>D</mi><mi>s</mi></msub></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">NP_s=MV_p(\frac{MD_T-MD_p}{MD_s})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+</ul>
+<h4 class="mume-header" id="forward-rate-agreements-fras">Forward Rate Agreements (FRAs)</h4>
+
+<ul>
+<li>FRAs are typically used to hedge the uncertainty about a future short-term borrowing or lending rate</li>
+<li>The long position in an FRA will receive a payment at settlement if the market rate of interest rate is higher than the (forward) rate specified in the FRA, and will make a payment to settle the FRA otherwise</li>
+<li>FRA payment is made at the future borrowing or lending date(or FRA expiration date) and is equal to
+<ul>
+<li>the present value of the difference in interest between a market-rate loan and a loan at the forward rate (rate specified in the FRA)</li>
+<li><img src="Asset/14.%20FRA.png" alt="FRA"></li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="short-dated-interest-rate-stir-futures-eurodollar-futures">Short-dated interest rate (STIR futures): Eurodollar futures</h4>
+
+<ul>
+<li>STIR futures are conceptually very similar to FRAs. The standardization of futures means that contracts are only available on specific maturities (typically quarterly)</li>
+<li>Characteristics of Eurodollar futures
+<ul>
+<li>Notional principal: $1 million</li>
+<li>Quoted price: 100-annualized forward rate
+<ul>
+<li>The pricing convention means that futures prices will rise when forward rates fall</li>
+<li>The forward interest rate is calculated from current spot LIBOR rates in the same way the forward price of an FRA is established</li>
+</ul>
+</li>
+<li>Contract period: 3-month</li>
+<li>One basis point change in the forward rate will cause the contract&apos;s value to change by $25 (1 million <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#xD7;</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">&#xD7;</span></span></span></span> 0.01% <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#xD7;</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">&#xD7;</span></span></span></span> 90/360 = 25)</li>
+</ul>
+</li>
+<li>Differences between Eurodollar futures and FRA
+<ul>
+<li>A long Eurodollar futures position will increase in value as forward rates decreases, and decrease in value as forward rates increase</li>
+<li>A long FRA position, which increases in value as forward rates increase, and decreases in value as forward rates decrease</li>
+</ul>
+</li>
+<li>Similarity between Eurodollar futures and FRA
+<ul>
+<li>Both Eurodollar futures and FRA agreements allow lenders and borrowers to lock in rates for future borrowing and lending</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="longer-dated-fixed-income-futures-t-bond-futures">Longer-dated fixed-income futures: T-bond futures</h4>
+
+<ul>
+<li>STIR futures can be used to hedge the interest rate risk of short-maturity bonds, however, <strong>liquidity of interest rate futures decreases for forward rates further in the future</strong></li>
+<li>Longer-maturity bonds are most often hedged with fixed-income futures (bond futures), which have very good liquidity
+<ul>
+<li><strong>Treasury futures</strong> are widely used as fixed-income futures, which are available on T-bills, Treasury notes and Treasury bonds and are traded on the CBOT (Chicago Board of Trade) and CME (Chicago Mercantile Exchange) in US</li>
+</ul>
+</li>
+<li>Characteristics of T-bond Futures
+<ul>
+<li><strong>Underlying</strong>: Hypothetical 30 year treasury bond with 6% coupon rate</li>
+<li><strong>Bond can be deliverable</strong>: $100,000 par value T-bonds with any coupon but with a maturity of at least 15 years.(US regulation)</li>
+<li><strong>Settlement</strong>: Physical delivering</li>
+<li><strong>Notional principl</strong>e: 0.1M</li>
+<li><strong>Quotes</strong> are in points and 32nds: A price quote of 95-18 is equal to 95.5625 and a dollar quote of $95,562.50</li>
+<li>The short has a delivery option to choose which bond to deliver</li>
+<li>Each bond is given a <strong>conversion factor (CF)</strong>, which means a specific bond is equivalent to CF standard bond underlying in futures contract
+<ul>
+<li>For a specific Bond A: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msub><mi>P</mi><mi>A</mi></msub><mo>=</mo><mi>F</mi><msub><mi>P</mi><mi>f</mi></msub><mo>&#xD7;</mo><mi>C</mi><msub><mi>F</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">FP_A = FP_f \times CF_A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+</li>
+<li>The target dollar duration of portfolio is set equal to the dollar duration of the bonds we hold and the dollar duration of the futures contracts
+<ul>
+<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>B</mi><mi>P</mi><msub><mi>V</mi><mi>T</mi></msub><mo>=</mo><mi>B</mi><mi>P</mi><msub><mi>V</mi><mi>P</mi></msub><mo>+</mo><mi>B</mi><mi>P</mi><msub><mi>V</mi><mi>f</mi></msub><mo>&#xD7;</mo><mi>B</mi><mi>P</mi><mi>V</mi><mi>H</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">BPV_T=BPV_P+BPV_f \times BPVHR</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span></span></li>
+<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>B</mi><mi>P</mi><msub><mi>V</mi><mi>f</mi></msub><mo>=</mo><mi>B</mi><mi>P</mi><msub><mi>V</mi><mrow><mi>C</mi><mi>T</mi><mi>D</mi></mrow></msub><mo>&#xD7;</mo><mfrac><mn>1</mn><mrow><mi>C</mi><msub><mi>F</mi><mrow><mi>C</mi><mi>T</mi><mi>D</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">BPV_f = BPV_{CTD}\times \frac{1}{CF_{CTD}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">CT</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.1574em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">CT</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></li>
+<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>B</mi><mi>P</mi><mi>V</mi><mi>H</mi><mi>R</mi><mo>=</mo><mfrac><mrow><mi>B</mi><mi>P</mi><msub><mi>V</mi><mi>T</mi></msub><mo>&#x2212;</mo><mi>B</mi><mi>P</mi><msub><mi>V</mi><mi>p</mi></msub></mrow><mrow><mi>B</mi><mi>P</mi><msub><mi>V</mi><mrow><mi>C</mi><mi>T</mi><mi>D</mi></mrow></msub></mrow></mfrac><mo>&#xD7;</mo><mi>C</mi><msub><mi>F</mi><mrow><mi>C</mi><mi>T</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">BPVHR = \frac{BPV_T-BPV_p}{BPV_{CTD}} \times CF_{CTD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">CT</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">CT</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></li>
+<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>B</mi><mi>P</mi><mi>V</mi><mi>H</mi><mi>R</mi><mo>=</mo><mfrac><mrow><mi>M</mi><msub><mi>D</mi><mi>T</mi></msub><mo>&#x2212;</mo><mi>M</mi><msub><mi>D</mi><mi>p</mi></msub></mrow><mrow><mi>M</mi><msub><mi>D</mi><mrow><mi>C</mi><mi>T</mi><mi>D</mi></mrow></msub></mrow></mfrac><mo>&#xD7;</mo><mi>C</mi><msub><mi>F</mi><mrow><mi>C</mi><mi>T</mi><mi>D</mi></mrow></msub><mo>&#xD7;</mo><mfrac><mrow><mi>n</mi><mi>o</mi><mi>m</mi><mi>i</mi><mi>n</mi><mi>a</mi><msub><mi>l</mi><mi>P</mi></msub></mrow><mrow><mi>n</mi><mi>o</mi><mi>m</mi><mi>i</mi><mi>n</mi><mi>a</mi><msub><mi>l</mi><mrow><mi>C</mi><mi>T</mi><mi>D</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">BPVHR = \frac{MD_T-MD_p}{MD_{CTD}} \times CF_{CTD} \times \frac{nominal_P}{nominal_{CTD}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">BP</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1963em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">CT</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">CT</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.2074em;vertical-align:-0.836em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">mina</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">CT</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">mina</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.836em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="managing-equity-risk">Managing equity risk</h3>
+
+<h4 class="mume-header" id="equity-swap">Equity Swap</h4>
+
+<ul>
+<li>Equity swaps can be used to create a synthetic exposure to physical stocks, allowing market participants to change their exposure to equity returns</li>
+<li>Equity swaps enable users to achieve the economic benefits of share ownership without the cost and expense of ownership</li>
+<li>Three types of equity swap
+<ul>
+<li>pay fixed rate and receive equity return</li>
+<li>pay floating rate and receive equity return</li>
+<li>pay one equity return and receive another equity return</li>
+</ul>
+</li>
+<li>The equity return may include dividend return plus price return based on
+<ul>
+<li>A single stock</li>
+<li>A basket of equities</li>
+<li>An equity index</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="equity-futures-and-forwards">Equity futures and forwards</h4>
+
+<ul>
+<li>Equity futures are exchange traded, standardized, require margin, have low transaction costs, and are available on indexes and single stocks</li>
+<li>Index futures have a multiplier. The actual futures price is the quoted futures price (in points) &#xD7; the multiplier</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Stock Index Futures</th>
+<th style="text-align:center">Multipliers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">S&amp;P 500 Index</td>
+<td style="text-align:center">250</td>
+</tr>
+<tr>
+<td style="text-align:center">NASDAQ 100</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">DJIA Index</td>
+<td style="text-align:center">10</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Equity forwards provide many of the same advantages but lack liquidity and but are not subject to mark-to-market margin adjustments</p>
+<ul>
+<li>Because there is no clearinghouse, the credit quality of the counterparties is a concern.</li>
+<li>The major advantage of forward contracts is they can be customized</li>
+</ul>
+</li>
+<li>
+<p>Equity futures can be used to alter portfolio beta<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>N</mi><mi>f</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>&#x3B2;</mi><mi>T</mi></msub><mo>&#x2212;</mo><msub><mi>&#x3B2;</mi><mi>p</mi></msub></mrow><msub><mi>&#x3B2;</mi><mi>f</mi></msub></mfrac><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>M</mi><msub><mi>V</mi><mi>p</mi></msub></mrow><mi>F</mi></mfrac><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>&#x3B2;</mi><mi>T</mi></msub><mo>&#x2212;</mo><msub><mi>&#x3B2;</mi><mi>p</mi></msub></mrow><msub><mi>&#x3B2;</mi><mi>f</mi></msub></mfrac><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>M</mi><msub><mi>V</mi><mi>p</mi></msub></mrow><mrow><mi>f</mi><mo>&#xD7;</mo><mi>m</mi><mi>u</mi><mi>l</mi><mi>t</mi><mi>i</mi><mi>p</mi><mi>l</mi><mi>i</mi><mi>e</mi><mi>r</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N_f=(\frac{\beta_T-\beta_p}{\beta_f})(\frac{MV_p}{F})=(\frac{\beta_T-\beta_p}{\beta_f})(\frac{MV_p}{f\times multiplier})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3435em;vertical-align:-0.9721em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3435em;vertical-align:-0.9721em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">&#x3B2;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">u</span><span class="mord mathnormal">lt</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.01968em;">pl</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span></p>
+</li>
+<li>
+<p><strong>Cash equitization</strong> (Cash securitization or cash overlay) refers to purchasing index futures to replicate the returns that would have been earned by investing the cash in an index with risk and return characteristics similar to those of the portfolio</p>
+</li>
+</ul>
+<h3 class="mume-header" id="using-derivative-to-alter-asset-allocation">Using derivative to alter asset allocation</h3>
+
+<p>Altering asset allocation between equity and debt with futures</p>
+<ul>
+<li>Step1: Calculate the reallocating amount</li>
+<li>Step 2: To reallocate an amount from equity to bonds:
+<ul>
+<li>Remove all systematic risk from the position (beta = 0) by shorting equity futures</li>
+<li>Add duration to the position (BPV &gt; 0) by going long bond futures</li>
+</ul>
+</li>
+<li>Step 3: To reallocate an amount from bonds to equity:
+<ul>
+<li>Remove all duration from the position (BVP = 0) by shorting bond futures</li>
+<li>Add systematic risk to the position (beta &gt; 0) by going long equity futures</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="managing-currency-risk">Managing Currency risk</h3>
+
+<h4 class="mume-header" id="currency-swap">Currency Swap</h4>
+
+<ul>
+<li>Reasons for currency swap
+<ul>
+<li>Converting a loan in one currency into a loan in another currency
+<ul>
+<li>A <strong>cross-currency basis swap</strong> is used in the case with <mark>principals switched at the beginning of the swap</mark></li>
+<li>Cross-currency basis represents the additional cost of borrowing dollars synthetically with a currency swap relative to the cost of borrowing directly in the USD cash market</li>
+<li>The additional cost indicated the foreign currency to be exhibiting negative basis. Most currencies shown a negative basis against the dollar since the financial crisis</li>
+</ul>
+</li>
+<li>Converting foreign cash receipts into domestic currency</li>
+<li>Also known as <strong>synthetic borrowing</strong> with <mark>no principal switched at the beginning of the swap</mark></li>
+</ul>
+</li>
+<li>Features of cross-currency basis swap:
+<ul>
+<li>Two notional principals exists in the currency swap and it needs to exchange and return the principal at the effective date and maturity date</li>
+<li>The periodical interest cannot be netted as there are different currencies</li>
+</ul>
+</li>
+<li>Features of synthetic borrowing:
+<ul>
+<li>Do not require an exchange of notional principals</li>
+<li>A series of exchange-rate cash flows in the future at a fixed exchange rate</li>
+<li>The amounts exchanged are based on the exchange rate and interest rate</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="currency-forwards-and-futures">Currency Forwards and Futures</h4>
+
+<p>Currency forwards and futures allow users to exchange a specified amount of one currency for a specified amount of another currency on a future date</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>H</mi><mi>R</mi><mo>=</mo><mfrac><mrow><mi>A</mi><mi>m</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>t</mi><mtext>&#x2005;&#x200A;</mtext><mi>o</mi><mi>f</mi><mtext>&#x2005;&#x200A;</mtext><mi>c</mi><mi>u</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>y</mi><mtext>&#x2005;&#x200A;</mtext><mi>t</mi><mi>o</mi><mtext>&#x2005;&#x200A;</mtext><mi>b</mi><mi>e</mi><mtext>&#x2005;&#x200A;</mtext><mi>e</mi><mi>x</mi><mi>c</mi><mi>h</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>e</mi><mi>d</mi></mrow><mrow><mi>F</mi><mi>u</mi><mi>t</mi><mi>u</mi><mi>r</mi><mi>e</mi><mi>s</mi><mtext>&#x2005;&#x200A;</mtext><mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>t</mi><mtext>&#x2005;&#x200A;</mtext><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">HR= \frac{Amount\;of\;currency\;to\;be\;exchanged}{Futures\;contract\;size}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">u</span><span class="mord mathnormal">res</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">co</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ze</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord mathnormal">m</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">u</span><span class="mord mathnormal">rre</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">cy</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord mathnormal">c</span><span class="mord mathnormal">han</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 class="mume-header" id="managing-volatility-risk">Managing Volatility risk</h3>
+
+<h4 class="mume-header" id="volatility-derivatives">Volatility derivatives</h4>
+
+<ul>
+<li>The VIX Index measures implied volatility in the S&amp;P 500 Index over a forward period of 30 days.
+<ul>
+<li>More specific, VIX computes a weighted average of implied volatility inferred from S&amp;P 500 traded options (calls and puts) with an average expiration of 30 days.</li>
+<li>Specifically, the VIX Index value is the annualized standard deviation of the expected percentage moves in the S&amp;P 500 Index over the following 30 days.</li>
+</ul>
+</li>
+<li>Vix futures
+<ul>
+<li>An equity holding can be protected from extreme downturns (tail risk) by buying VIX futures</li>
+<li>Selling VIX futures creates a short volatility position and captures the volatility risk premium embedded in S&amp;P 500 options</li>
+</ul>
+</li>
+<li>Vix options
+<ul>
+<li>VIX options are cash-settled European-style options</li>
+<li>VIX call options will gain in value if expectations of volatility at maturity of the option increase</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="variance-swap">Variance swap</h4>
+
+<ul>
+<li>Variance swaps payoffs are based on variance rather than volatility</li>
+<li>In a variance swap, the buyer of the contract will pay the difference between the <strong>fixed variance strike</strong> agreed on in the contract and the <strong>realized variance</strong> (annualized) on the underlying over the period specified and applied to a variance notional</li>
+<li>The fixed payment is typically based on implied volatility2 (implied variance) over the period and is known at the initiation of the swap, this is referred to as the variance strike</li>
+<li>The variable payment is unknown at swap initiation and is only known at swap maturity. It is the actual variance of the underlying asset over the life of the swap and is referred to as realized variance</li>
+<li>The features of variance swap
+<ul>
+<li>no exchange of notional principal and no interim settlement periods</li>
+<li>With a variance swap, there is a single payment at the expiration of the swap based on the difference between actual and implied variance over the life of the swap</li>
+</ul>
+</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mtext>&#x2005;&#x200A;</mtext><mi>n</mi><mi>o</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>a</mi><mi>l</mi><mo>=</mo><mfrac><mrow><mi>v</mi><mi>e</mi><mi>g</mi><mi>a</mi><mtext>&#x2005;&#x200A;</mtext><mi>n</mi><mi>o</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>a</mi><mi>l</mi></mrow><mrow><mn>2</mn><mi>K</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">variance\;notional=\frac{vega\;notional}{2K}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">ian</span><span class="mord mathnormal">ce</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">na</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">na</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mi>e</mi><mi>t</mi><mi>t</mi><mi>l</mi><mi>e</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>&#x2005;&#x200A;</mtext><mi>a</mi><mi>m</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>t</mi><mtext>&#x2005;&#x200A;</mtext><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi><mo stretchy="false">)</mo><mo>=</mo><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mtext>&#x2005;&#x200A;</mtext><mi>n</mi><mi>o</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>a</mi><mi>l</mi><mo>&#xD7;</mo><mo stretchy="false">(</mo><msup><mi>&#x3C3;</mi><mn>2</mn></msup><mo>&#x2212;</mo><msup><mi>K</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">settlement\;amount\;(long) = variance\;notional \times (\sigma^2-K^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">se</span><span class="mord mathnormal" style="margin-right:0.01968em;">ttl</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">am</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">ian</span><span class="mord mathnormal">ce</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">na</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mi>e</mi><mi>t</mi><mi>t</mi><mi>l</mi><mi>e</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>&#x2005;&#x200A;</mtext><mi>a</mi><mi>m</mi><mi>o</mi><mi>u</mi><mi>n</mi><mi>t</mi><mtext>&#x2005;&#x200A;</mtext><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi><mo stretchy="false">)</mo><mo>=</mo><mi>v</mi><mi>e</mi><mi>g</mi><mi>a</mi><mtext>&#x2005;&#x200A;</mtext><mi>n</mi><mi>o</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>a</mi><mi>l</mi><mo>&#xD7;</mo><mo stretchy="false">(</mo><mfrac><mrow><msup><mi>&#x3C3;</mi><mn>2</mn></msup><mo>&#x2212;</mo><msup><mi>K</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>K</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">settlement\;amount\;(long) = vega\;notional \times (\frac{\sigma^2-K^2}{2K})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">se</span><span class="mord mathnormal" style="margin-right:0.01968em;">ttl</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">am</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">na</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.1771em;vertical-align:-0.686em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4911em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li>
+<p><strong>vega notional</strong> represents the average profit and loss of the variance swap for a 1% change in volatility from the strike</p>
+</li>
+<li>
+<p>The Mark-to-Market value of variance swap</p>
+<ul>
+<li>The mark-to-market valuation of a variance swap at time t will depend on realized volatility from the swap&#x2019;s initiation to t, and implied volatility at t over the remaining life of the swap (T &#x2212; t)</li>
+<li><strong>step 1</strong>:Compute expected variance at maturity (the time-weighted average of realized variance and implied variance over the remainder of the swap&apos;s life)</li>
+<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mi>x</mi><mi>p</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>e</mi><mi>d</mi><mtext>&#x2005;&#x200A;</mtext><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mtext>&#x2005;&#x200A;</mtext><mi>t</mi><mi>o</mi><mtext>&#x2005;&#x200A;</mtext><mi>m</mi><mi>a</mi><mi>t</mi><mi>u</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>=</mo><mo stretchy="false">(</mo><msubsup><mi>&#x3C3;</mi><mi>t</mi><mn>2</mn></msubsup><mo>&#xD7;</mo><mfrac><mi>t</mi><mi>T</mi></mfrac><mo>+</mo><mo stretchy="false">(</mo><msubsup><mi>K</mi><mrow><mi>T</mi><mo>&#x2212;</mo><mi>t</mi></mrow><mn>2</mn></msubsup><mo>&#xD7;</mo><mfrac><mrow><mi>T</mi><mo>&#x2212;</mo><mi>t</mi></mrow><mi>T</mi></mfrac><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Expected \;variance \;to \;maturity = (\sigma^2_t\times \frac{t}{T}+(K^2_{T-t}\times \frac{T-t}{T}))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">x</span><span class="mord mathnormal">p</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">ian</span><span class="mord mathnormal">ce</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">ma</span><span class="mord mathnormal">t</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.9781em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2921em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">t</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1694em;vertical-align:-0.3053em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mbin mtight">&#x2212;</span><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3053em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">t</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">))</span></span></span></span></span></li>
+<li><strong>step 2</strong>: Compute expected payoff at swap maturity:</li>
+<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mi>x</mi><mi>p</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>e</mi><mi>d</mi><mtext>&#x2005;&#x200A;</mtext><mi>p</mi><mi>a</mi><mi>y</mi><mi>o</mi><mi>f</mi><mi>f</mi><mo>=</mo><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mtext>&#x2005;&#x200A;</mtext><mi>n</mi><mi>o</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>a</mi><mi>l</mi><mo>&#xD7;</mo><mo stretchy="false">(</mo><mi>e</mi><mi>x</mi><mi>p</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>e</mi><mi>d</mi><mtext>&#x2005;&#x200A;</mtext><mi>v</mi><mi>a</mi><mi>r</mi><mi>i</mi><mi>a</mi><mi>n</mi><mi>c</mi><mi>e</mi><mtext>&#x2005;&#x200A;</mtext><mi>t</mi><mi>o</mi><mtext>&#x2005;&#x200A;</mtext><mi>m</mi><mi>a</mi><mi>t</mi><mi>u</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>&#x2212;</mo><mi>o</mi><mi>r</mi><mi>i</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>a</mi><mi>l</mi><mtext>&#x2005;&#x200A;</mtext><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>k</mi><mi>e</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Expected\;payoff = variance\;notional\times (expected\;variance\;to\;maturity-original\;strike)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">x</span><span class="mord mathnormal">p</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal">yo</span><span class="mord mathnormal" style="margin-right:0.10764em;">ff</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">ian</span><span class="mord mathnormal">ce</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">na</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord mathnormal">p</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">ian</span><span class="mord mathnormal">ce</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">ma</span><span class="mord mathnormal">t</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">ina</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03148em;">ik</span><span class="mord mathnormal">e</span><span class="mclose">)</span></span></span></span></span></li>
+</ul>
+</li>
+<li>
+<p>The Payoff of a Variance Swap Is <strong>Convex</strong> in Volatility<br>
+<img src="Asset/15.%20variance%20swap%20payoff.png" alt="variance swap payoff"></p>
+</li>
+</ul>
+<h3 class="mume-header" id="inferring-market-expectation">Inferring Market Expectation</h3>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Application</th>
+<th style="text-align:center">Derivative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Inferring expectations of FOMC moves</td>
+<td style="text-align:center">Fed funds futures</td>
+</tr>
+<tr>
+<td style="text-align:center">Inferring expectations of inflation</td>
+<td style="text-align:center">CPI swaps</td>
+</tr>
+<tr>
+<td style="text-align:center">Inferring expectations of futures volatility</td>
+<td style="text-align:center">VIX futures and options</td>
+</tr>
+</tbody>
+</table>
+<h4 class="mume-header" id="fed-funds-futures">Fed funds futures</h4>
+
+<ul>
+<li>Fed funds futures contract price = 100 - Expected FFE rate</li>
+<li>Market participants can use Fed funds futures to infer the expected probabilities of upcoming Fed interest rate changes. Some terms and definitions used in the analysis include
+<ul>
+<li><strong>Federal funds rate</strong>. This is the interest rate that deposit institutions (banks and credit unions) charge other deposit institutions for loans in the overnight interbank markets
+<ul>
+<li>The <strong>federal funds effective (FFE) rate</strong> is the weighted average of interest rates charged on overnight interbank loans</li>
+</ul>
+</li>
+<li><strong>Federal funds target rate</strong>. This is the rate set by governors of the Federal Reserve in Federal Open Market Committee (FOMC) meetings
+<ul>
+<li>The target rate is typically set as a range (e.g. 2.25% - 2.50%).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="eurodollar-futures">Eurodollar futures</h4>
+
+<ul>
+<li>The futures pries quote is 100 minus the futures interest rate</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
